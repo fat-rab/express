@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<% if (!loginStatus){ %>
+    <div class="hero-unit">
+        <h1><%= title %></h1>
+        <p>MicroBlog 是一個基于 Node.js 的博客系统。</p>
+        <p>
+            <a class="btn btn-primary btn-large" href="/login">登陆</a>
+            <a class="btn btn-large" href="/reg">立刻注册</a>
+        </p>
+    </div>
+<% } else { %>
+    <form method="post" action="/post" class="well form-inline center" style="text-align:center;">
+        <input type="text" class="span8" name="msg">
+        <button type="submit" class="btn btn-success"><i class="icon-comment icon-white"></i>评论</button>
+    </form>
+<% } %>
+<% msgList.forEach((item)=>{ %>
+    <div class="span4">
+        <h2><a href="/u/<%= item.name %>"><%= item.name %></a> 评论</h2>
+        <p><%= item.msg %></p>
+    </div>
+<% }) %>
+</body>
+</html>
